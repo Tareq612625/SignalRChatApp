@@ -1,8 +1,12 @@
+using SignalRChatApp;
 using SignalRChatApp.Hubs;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//Externer service class (data access service , database connection service )
+builder.Services.AddDataServices(builder.Configuration);
+
 builder.Services.AddSignalR();
 
 var app = builder.Build();

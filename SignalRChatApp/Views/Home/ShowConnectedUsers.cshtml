@@ -1,0 +1,16 @@
+﻿@model SignalRChatApp.ConnectedUsers;
+
+@{
+    ViewData["Title"] = "Connected User";
+}
+
+<div class="col-2">
+    <h2>Online Connected User List</h2>
+</div>
+
+<ul>
+    @foreach (var user in SignalRChatApp.ConnectedUsers.myConnectedUsers)
+    {
+        <li>@user</li>
+    }
+</ul>

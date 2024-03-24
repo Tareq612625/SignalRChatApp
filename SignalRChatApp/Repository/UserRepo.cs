@@ -1,5 +1,9 @@
 ﻿using SignalRChatApp.Interface;
 using SignalRChatApp.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SignalRChatApp.Repository
 {
@@ -14,43 +18,29 @@ namespace SignalRChatApp.Repository
 
         public async Task<User> GetByEmailAsync(string email)
         {
-            return _dbContext.User.Where(c => c.Email == email).FirstOrDefault();
+            return await _dbContext.User.FirstOrDefaultAsync(c => c.Email == email);
         }
 
-        public async Task<User> GetByIdAsync(int Id)
+        public async Task<User> GetByIdAsync(int id)
         {
-
-            return _dbContext.User.Where(c=>c.Id==Id).FirstOrDefault();
+            return await _dbContext.User.FirstOrDefaultAsync(c => c.Id == id);
         }
-      
+
         public async Task SaveAsync(User user)
         {
-            await Task.Run(() =>
-            {
-                _dbContext.Add(user);
-                _dbContext.SaveChanges();
-            });
+            _dbContext.Add(user);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<User>> SelectAllAsync()
         {
-            await Task.Run(() =>
-            {
-                _dbContext.User.ToList();
-            });
-
-            return Enumerable.Empty<User>();
+            return await _dbContext.User.ToListAsync();
         }
 
         public async Task UpdateAsync(User user)
         {
-            await Task.Run(() =>
-            {
-                _dbContext.Update(user);
-                _dbContext.SaveChanges();
-            });
+            _dbContext.Update(user);
+            await _dbContext.SaveChangesAsync();
         }
-
-       
     }
 }

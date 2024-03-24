@@ -11,11 +11,12 @@ namespace SignalRChatApp
         public static IServiceCollection AddDataServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<AppDbContext>(options =>
-            {
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-            });
+                                                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")),
+                                                ServiceLifetime.Scoped);
+
 
             services.AddScoped<IUser, UserRepo>();
+            services.AddScoped<SessionRepo>(); // Register session class
 
             return services;
         }

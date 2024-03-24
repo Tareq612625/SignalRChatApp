@@ -69,7 +69,7 @@ namespace SignalRChatApp.Controllers
         public IActionResult Logout()
         {
             _sessionManager.RemoveAllSessionVlaue();
-            return RedirectToAction("User", "Login");
+            return RedirectToAction("Login", "User");
         }
     }
 }

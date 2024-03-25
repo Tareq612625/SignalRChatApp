@@ -17,10 +17,10 @@ namespace SignalRChatApp.Models
         [StringLength(100, ErrorMessage = "Receiver name cannot be longer than 100 characters")]
         public string Receiver { get; set; }
 
-        [Required(ErrorMessage = "Message content is required")]
+        [Required(ErrorMessage = "Receiver is required")]
         public string Message { get; set; }
 
-        [Required(ErrorMessage = "Timestamp is required")]
-        public DateTime Timestamp { get; set; }
+        public DateTime Timestamp { get; set; } = DateTime.Now;
+        public Boolean IsRead { get; set; } = false;
     }
 }

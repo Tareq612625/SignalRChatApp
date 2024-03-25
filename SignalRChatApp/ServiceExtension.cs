@@ -16,6 +16,7 @@ namespace SignalRChatApp
 
 
             services.AddScoped<IUser, UserRepo>();
+            services.AddScoped<IChatMessage, ChatMessageRepo>();
             services.AddScoped<SessionRepo>(); // Register session class
 
             return services;

@@ -22,5 +22,6 @@ namespace SignalRChatApp.Models
             base.OnModelCreating(modelBuilder);
         }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<ChatMessage> ChatMessage { get; set; }
     }
 }

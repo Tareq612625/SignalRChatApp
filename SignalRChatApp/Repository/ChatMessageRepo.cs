@@ -17,9 +17,11 @@ namespace SignalRChatApp.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<ChatMessage>> GetSenderReceiverChat(string email)
+        public async Task<IEnumerable<ChatMessage>> GetSenderReceiverChat(string email, string appUserEmail)
         {
-            return await _dbContext.ChatMessage.Where(c => c.Sender == email || c.Receiver == email).ToListAsync();
+            return await _dbContext.ChatMessage
+        .Where(c => (c.Sender == email && c.Receiver == appUserEmail) || (c.Receiver == email && c.Sender == appUserEmail))
+        .ToListAsync();
         }
 
         public async Task<ChatMessage> GetByIdAsync(int id)

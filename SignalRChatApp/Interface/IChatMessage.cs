@@ -9,7 +9,7 @@ namespace SignalRChatApp.Interface
         Task UpdateAsync(ChatMessage user);
         Task<IEnumerable<ChatMessage>> SelectAllAsync();
         Task<ChatMessage> GetByIdAsync(int Id);
-        Task<IEnumerable<ChatMessage>> GetSenderReceiverChat(string email);
+        Task<IEnumerable<ChatMessage>> GetSenderReceiverChat(string email, string appUserEmail);
         Task<IEnumerable<VwChatted>> getUserChattedList(string userEmail);
     }
 }

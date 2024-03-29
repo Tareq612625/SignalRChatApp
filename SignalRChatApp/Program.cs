@@ -57,5 +57,6 @@ app.MapControllerRoute(
     pattern: "{controller=User}/{action=Login}/{id?}");
 
 app.MapHub<ConnectedHub>("/ConnectedHub");
+app.MapHub<ChatHub>("/ChatHub");
 
 app.Run();
